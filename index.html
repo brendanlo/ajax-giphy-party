@@ -7,11 +7,14 @@
 </head>
 
 <body>
-  <form action="submit" id='giphy-form'>
+  <form id='giphy-form' method="POST">
     <input type="search" id='search-term'>
     <button form='giphy-form' id='search-btn'>Search Giphy!</button>
     <button form='giphy-form' id='remove-btn'>Remove Images</button>
   </form>
+  <div id = "gifs-container">
+
+  </div>
 
   <script src="https://unpkg.com/jquery"></script>
   <script src="https://unpkg.com/axios/dist/axios.js"></script>
