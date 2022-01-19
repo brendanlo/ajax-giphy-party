@@ -10,20 +10,21 @@ async function makeSearch(evt) {
 
     let searchTerm = $('#search-term').val();
     let searchParams = { q: searchTerm, api_key: "MhAodEJIJxQMxW9XqxKjyXfNYdLoOIym" };
-    console.log("params = ", { searchParams });
+    console.log("params = ", searchParams);
     let response = await axios.get(
         'http://api.giphy.com/v1/gifs/search?', { params: searchParams });
     console.log("response: ", response.data);
-
-    appendGif(response.data[0].embed_url);
+    console.log("this should FINALLY be the URL for the first gif:", response.data.data[0].images.original.url); //bc Giphy API said so
+    appendGif(response.data.data[0].images.original.url); 
 }
 
-/** appendGif takes a string URL argument, then creates an img
- *  element, sets the source URL to the gifURL, and appends it to
- * the #gifs-container div
+/** appendGif a gif URL string argument, 
+ * then creates an img element with src set to gif URL 
+ * and appends it to the #gifs-container div
  */
 
 function appendGif(gifUrl) {
+    console.log("we're inside the appendGif function!! HELL YEAH!!");
     let $newGifImg = $(`<img class = 'gif' src = ${gifUrl}>`);
     $("#gifs-container").append($newGifImg);
 }
